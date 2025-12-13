@@ -17,21 +17,21 @@ export function Display({ expression, preview, error, memory, isRadians }: Displ
   };
 
   return (
-    <div className="display-screen rounded-xl p-4 mb-4 relative overflow-hidden">
+    <div className="display-screen rounded-xl p-5 md:p-6 mb-5 relative overflow-hidden">
       {/* Scanline effect */}
       <div className="scanline absolute inset-0" />
       
       {/* Status indicators */}
-      <div className="flex justify-between items-center mb-2 text-xs text-muted-foreground">
+      <div className="flex justify-between items-center mb-3 text-sm text-muted-foreground">
         <div className="flex gap-3">
           <span className={cn(
-            'px-2 py-0.5 rounded',
+            'px-2 py-1 rounded',
             isRadians ? 'bg-primary/20 text-primary glow-subtle' : 'bg-muted'
           )}>
             {isRadians ? 'RAD' : 'DEG'}
           </span>
           {memory !== 0 && (
-            <span className="px-2 py-0.5 rounded bg-memory/50 text-purple-300">
+            <span className="px-2 py-1 rounded bg-memory/50 text-purple-300">
               M: {memory.toFixed(2)}
             </span>
           )}
@@ -42,11 +42,11 @@ export function Display({ expression, preview, error, memory, isRadians }: Displ
       </div>
 
       {/* Main display */}
-      <div className="min-h-[80px] flex flex-col justify-end items-end">
+      <div className="min-h-[100px] flex flex-col justify-end items-end">
         {/* Expression/Main value */}
         <div 
           className={cn(
-            'font-display text-3xl md:text-4xl tracking-wider glow-text transition-all',
+            'font-display text-4xl md:text-5xl tracking-wider glow-text transition-all',
             error && 'text-destructive'
           )}
         >
@@ -55,7 +55,7 @@ export function Display({ expression, preview, error, memory, isRadians }: Displ
         
         {/* Preview */}
         {preview && !error && (
-          <div className="text-lg text-muted-foreground mt-1 font-mono animate-fade-in">
+          <div className="text-xl text-muted-foreground mt-2 font-mono animate-fade-in">
             = {formatDisplay(preview)}
           </div>
         )}

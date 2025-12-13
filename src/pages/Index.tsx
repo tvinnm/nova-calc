@@ -23,21 +23,55 @@ const Index = () => {
       </div>
 
       {/* Main content */}
-      <div className="relative z-10 flex flex-col items-center justify-center min-h-screen py-8 px-4">
-        <header className="text-center mb-8">
-          <h1 className="font-display text-3xl md:text-4xl text-primary glow-text tracking-widest mb-2">
-            CASIO FX-CYBER
-          </h1>
-          <p className="text-muted-foreground text-sm tracking-wide">
-            Scientific Calculator • High-Tech Edition
-          </p>
-        </header>
+      <div className="relative z-10 flex items-center justify-center min-h-screen py-8 px-4 md:px-8 lg:px-16">
+        <div className="w-full max-w-7xl grid lg:grid-cols-[1fr_auto] gap-8 lg:gap-16 items-center">
+          
+          {/* Left side - Text content */}
+          <div className="text-left space-y-8 lg:pr-8">
+            <div className="space-y-4">
+              <h1 className="font-display text-4xl md:text-5xl lg:text-6xl text-foreground leading-tight">
+                Calculate Your{' '}
+                <span className="text-primary glow-text">Problem Easily.</span>
+              </h1>
+              <p className="text-muted-foreground text-lg md:text-xl max-w-lg leading-relaxed">
+                A powerful scientific calculator with advanced mathematical functions, 
+                built for engineers, students, and professionals who demand precision.
+              </p>
+            </div>
 
-        <ScientificCalculator />
+            {/* Tips section */}
+            <div className="space-y-6 pt-4">
+              <div className="space-y-2">
+                <h3 className="text-primary font-display text-lg tracking-wide">Tips — 1</h3>
+                <p className="text-muted-foreground text-sm leading-relaxed max-w-md">
+                  Use keyboard shortcuts for faster calculations. Press numbers, operators, 
+                  and Enter to compute results instantly without clicking.
+                </p>
+              </div>
 
-        <footer className="mt-8 text-center text-xs text-muted-foreground">
-          <p>Use keyboard for quick input • Press Enter to calculate</p>
-        </footer>
+              <div className="space-y-2">
+                <h3 className="text-primary font-display text-lg tracking-wide">Tips — 2</h3>
+                <p className="text-muted-foreground text-sm leading-relaxed max-w-md">
+                  Toggle between RAD and DEG modes for trigonometric functions. 
+                  Perfect for both pure math and engineering applications.
+                </p>
+              </div>
+
+              <div className="space-y-2">
+                <h3 className="text-primary font-display text-lg tracking-wide">Tips — 3</h3>
+                <p className="text-muted-foreground text-sm leading-relaxed max-w-md">
+                  Access your calculation history anytime. Click the history icon 
+                  to search through past calculations and reuse results.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* Right side - Calculator */}
+          <div className="flex justify-center lg:justify-end">
+            <ScientificCalculator />
+          </div>
+        </div>
       </div>
     </main>
   );
