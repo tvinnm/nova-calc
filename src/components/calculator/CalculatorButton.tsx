@@ -28,7 +28,7 @@ export const CalculatorButton = forwardRef<HTMLButtonElement, CalculatorButtonPr
         ref={ref}
         onClick={onClick}
         className={cn(
-          'calc-button rounded-lg h-14 font-mono text-lg',
+          'calc-button rounded-xl h-14 md:h-16 font-mono text-lg md:text-xl',
           'border border-glass-border/30',
           'focus:outline-none focus:ring-2 focus:ring-primary/50',
           'transition-all duration-150',

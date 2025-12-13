@@ -91,7 +91,7 @@ export function ScientificCalculator() {
     { id: 'log', label: 'log', action: () => inputFunction('log') },
     { id: 'ln', label: 'ln', action: () => inputFunction('ln') },
     { id: 'sqrt', label: '√', action: () => inputFunction('sqrt') },
-    { id: 'pow', label: 'x^y', action: () => inputOperator('^') },
+    { id: 'pow', label: 'xʸ', action: () => inputOperator('^') },
     { id: 'pi', label: 'π', action: () => inputConstant('π') },
     { id: 'e', label: 'e', action: () => inputConstant('e') },
     { id: 'fact', label: 'x!', action: () => inputOperator('!') },
@@ -115,28 +115,27 @@ export function ScientificCalculator() {
   ];
 
   return (
-    <div className="w-full max-w-md mx-auto p-4">
+    <div className="w-full max-w-xl">
       {/* Header */}
-      <div className="flex items-center justify-between mb-4">
-        <h1 className="font-display text-xl md:text-2xl text-primary glow-text tracking-wider">
+      <div className="flex items-center justify-between mb-6">
+        <h2 className="font-display text-2xl md:text-3xl text-primary glow-text tracking-wider">
           SCIENTIFIC CALC
-        </h1>
+        </h2>
         <button
           onClick={() => setShowHistory(!showHistory)}
           className={cn(
-            'p-2 rounded-lg transition-all',
+            'p-3 rounded-xl transition-all',
             showHistory 
               ? 'bg-primary text-primary-foreground' 
               : 'bg-muted hover:bg-muted/80 text-muted-foreground'
           )}
         >
-          <History className="w-5 h-5" />
+          <History className="w-6 h-6" />
         </button>
       </div>
 
-      <div className="flex gap-4">
-        {/* Main calculator */}
-        <div className="flex-1 glass-panel rounded-2xl p-4 glow-border">
+      <div className="flex gap-6">
+        <div className="flex-1 glass-panel rounded-2xl p-5 md:p-6 glow-border">
           <Display
             expression={state.display}
             preview={state.preview}
