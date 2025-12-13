@@ -4,7 +4,6 @@ import { useCalculator } from '@/hooks/useCalculator';
 import { Display } from './Display';
 import { CalculatorButton } from './CalculatorButton';
 import { HistoryPanel } from './HistoryPanel';
-import { KeyboardIndicator } from './KeyboardIndicator';
 import { cn } from '@/lib/utils';
 
 export function ScientificCalculator() {
@@ -335,9 +334,6 @@ export function ScientificCalculator() {
               =
             </CalculatorButton>
           </div>
-
-          {/* Keyboard indicator */}
-          <KeyboardIndicator pressedKey={pressedKey} />
         </div>
 
         {/* History panel */}
