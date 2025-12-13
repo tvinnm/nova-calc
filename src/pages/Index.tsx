@@ -1,8 +1,12 @@
 import { ScientificCalculator } from '@/components/calculator/ScientificCalculator';
+import { ParticleBackground } from '@/components/ParticleBackground';
 
 const Index = () => {
   return (
     <main className="min-h-screen bg-background relative overflow-hidden">
+      {/* Animated particle background */}
+      <ParticleBackground />
+
       {/* Background effects */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         {/* Gradient orbs */}
