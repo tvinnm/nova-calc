@@ -82,35 +82,60 @@ export function ScientificCalculator() {
     };
   }, [inputDigit, inputOperator, inputParenthesis, calculate, backspace, allClear]);
 
-  // Scientific function buttons
-  const scientificButtons = [
+  // Basic Operations (1-4)
+  const basicButtons = [
+    { id: 'lparen', label: '(', action: () => inputParenthesis('(') },
+    { id: 'rparen', label: ')', action: () => inputParenthesis(')') },
+    { id: 'pi', label: 'π', action: () => inputConstant('π') },
+    { id: 'e', label: 'e', action: () => inputConstant('e') },
+  ];
+
+  // Powers & Roots (5-8)
+  const powerButtons = [
+    { id: 'pow', label: 'xʸ', action: () => inputOperator('^') },
+    { id: 'sq', label: 'x²', action: () => inputFunction('sq') },
+    { id: 'sqrt', label: '√x', action: () => inputFunction('sqrt') },
+    { id: 'nroot', label: 'ⁿ√x', action: () => inputFunction('nroot') },
+  ];
+
+  // Logarithms (9-10, 17-18)
+  const logButtons = [
+    { id: 'ln', label: 'ln', action: () => inputFunction('ln') },
+    { id: 'exp', label: 'eˣ', action: () => inputFunction('exp') },
+    { id: 'log10', label: 'log₁₀', action: () => inputFunction('log') },
+    { id: 'logb', label: 'logₐ', action: () => inputFunction('logb') },
+  ];
+
+  // Trigonometry (11-16)
+  const trigButtons = [
     { id: 'sin', label: 'sin', action: () => inputFunction('sin') },
     { id: 'cos', label: 'cos', action: () => inputFunction('cos') },
     { id: 'tan', label: 'tan', action: () => inputFunction('tan') },
-    { id: 'log', label: 'log', action: () => inputFunction('log') },
-    { id: 'ln', label: 'ln', action: () => inputFunction('ln') },
-    { id: 'sqrt', label: '√', action: () => inputFunction('sqrt') },
-    { id: 'pow', label: 'xʸ', action: () => inputOperator('^') },
-    { id: 'pi', label: 'π', action: () => inputConstant('π') },
-    { id: 'e', label: 'e', action: () => inputConstant('e') },
-    { id: 'fact', label: 'x!', action: () => inputOperator('!') },
-    { id: 'lparen', label: '(', action: () => inputParenthesis('(') },
-    { id: 'rparen', label: ')', action: () => inputParenthesis(')') },
-  ];
-
-  const advancedButtons = [
     { id: 'asin', label: 'sin⁻¹', action: () => inputFunction('asin') },
     { id: 'acos', label: 'cos⁻¹', action: () => inputFunction('acos') },
     { id: 'atan', label: 'tan⁻¹', action: () => inputFunction('atan') },
-    { id: 'sinh', label: 'sinh', action: () => inputFunction('sinh') },
-    { id: 'cosh', label: 'cosh', action: () => inputFunction('cosh') },
-    { id: 'tanh', label: 'tanh', action: () => inputFunction('tanh') },
-    { id: 'cbrt', label: '∛', action: () => inputFunction('cbrt') },
+  ];
+
+  // Additional Functions (19)
+  const extraButtons = [
     { id: 'abs', label: '|x|', action: () => inputFunction('abs') },
-    { id: 'exp', label: 'eˣ', action: () => inputFunction('exp') },
+    { id: 'fact', label: 'x!', action: () => inputOperator('!') },
     { id: 'percent', label: '%', action: () => inputOperator('%') },
-    { id: 'floor', label: '⌊x⌋', action: () => inputFunction('floor') },
-    { id: 'ceil', label: '⌈x⌉', action: () => inputFunction('ceil') },
+    { id: 'cbrt', label: '∛', action: () => inputFunction('cbrt') },
+  ];
+
+  // Conversions (22-25)
+  const conversionButtons = [
+    { id: 'radToDeg', label: 'r→d', action: () => inputFunction('radToDeg') },
+    { id: 'degToRad', label: 'd→r', action: () => inputFunction('degToRad') },
+    { id: 'decToBin', label: 'D→B', action: () => inputFunction('decToBin') },
+    { id: 'binToDec', label: 'B→D', action: () => inputFunction('binToDec') },
+  ];
+
+  // Equation Solvers (20-21)
+  const solverButtons = [
+    { id: 'linear', label: 'ax+b=0', action: () => inputFunction('solveLinear') },
+    { id: 'quadratic', label: 'ax²+bx+c', action: () => inputFunction('solveQuad') },
   ];
 
   return (
@@ -182,9 +207,51 @@ export function ScientificCalculator() {
             </CalculatorButton>
           </div>
 
-          {/* Scientific functions */}
+          {/* Basic & Constants */}
+          <div className="grid grid-cols-4 gap-2 mb-2">
+            {basicButtons.map((btn) => (
+              <CalculatorButton
+                key={btn.id}
+                variant="function"
+                onClick={() => handleButtonPress(btn.id, btn.action)}
+                pressed={pressedButton === btn.id}
+              >
+                {btn.label}
+              </CalculatorButton>
+            ))}
+          </div>
+
+          {/* Powers & Roots */}
+          <div className="grid grid-cols-4 gap-2 mb-2">
+            {powerButtons.map((btn) => (
+              <CalculatorButton
+                key={btn.id}
+                variant="function"
+                onClick={() => handleButtonPress(btn.id, btn.action)}
+                pressed={pressedButton === btn.id}
+              >
+                {btn.label}
+              </CalculatorButton>
+            ))}
+          </div>
+
+          {/* Logarithms */}
+          <div className="grid grid-cols-4 gap-2 mb-2">
+            {logButtons.map((btn) => (
+              <CalculatorButton
+                key={btn.id}
+                variant="function"
+                onClick={() => handleButtonPress(btn.id, btn.action)}
+                pressed={pressedButton === btn.id}
+              >
+                {btn.label}
+              </CalculatorButton>
+            ))}
+          </div>
+
+          {/* Trigonometry */}
           <div className="grid grid-cols-6 gap-2 mb-2">
-            {scientificButtons.map((btn) => (
+            {trigButtons.map((btn) => (
               <CalculatorButton
                 key={btn.id}
                 variant="function"
@@ -207,17 +274,48 @@ export function ScientificCalculator() {
 
           {/* Advanced functions */}
           {showAdvanced && (
-            <div className="grid grid-cols-6 gap-2 mb-2 animate-fade-in">
-              {advancedButtons.map((btn) => (
-                <CalculatorButton
-                  key={btn.id}
-                  variant="function"
-                  onClick={() => handleButtonPress(btn.id, btn.action)}
-                  pressed={pressedButton === btn.id}
-                >
-                  {btn.label}
-                </CalculatorButton>
-              ))}
+            <div className="space-y-2 mb-2 animate-fade-in">
+              {/* Extra Functions */}
+              <div className="grid grid-cols-4 gap-2">
+                {extraButtons.map((btn) => (
+                  <CalculatorButton
+                    key={btn.id}
+                    variant="function"
+                    onClick={() => handleButtonPress(btn.id, btn.action)}
+                    pressed={pressedButton === btn.id}
+                  >
+                    {btn.label}
+                  </CalculatorButton>
+                ))}
+              </div>
+
+              {/* Conversions */}
+              <div className="grid grid-cols-4 gap-2">
+                {conversionButtons.map((btn) => (
+                  <CalculatorButton
+                    key={btn.id}
+                    variant="function"
+                    onClick={() => handleButtonPress(btn.id, btn.action)}
+                    pressed={pressedButton === btn.id}
+                  >
+                    {btn.label}
+                  </CalculatorButton>
+                ))}
+              </div>
+
+              {/* Equation Solvers */}
+              <div className="grid grid-cols-2 gap-2">
+                {solverButtons.map((btn) => (
+                  <CalculatorButton
+                    key={btn.id}
+                    variant="function"
+                    onClick={() => handleButtonPress(btn.id, btn.action)}
+                    pressed={pressedButton === btn.id}
+                  >
+                    {btn.label}
+                  </CalculatorButton>
+                ))}
+              </div>
             </div>
           )}
 
