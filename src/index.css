@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Orbitron:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=VT323&family=Press+Start+2P&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -6,58 +6,58 @@
 
 @layer base {
   :root {
-    --background: 220 40% 6%;
-    --foreground: 190 100% 90%;
+    --background: 0 0% 0%;
+    --foreground: 120 100% 50%;
 
-    --card: 220 35% 10%;
-    --card-foreground: 190 100% 90%;
+    --card: 0 0% 5%;
+    --card-foreground: 120 100% 50%;
 
-    --popover: 220 35% 12%;
-    --popover-foreground: 190 100% 90%;
+    --popover: 0 0% 5%;
+    --popover-foreground: 120 100% 50%;
 
-    --primary: 185 100% 50%;
-    --primary-foreground: 220 40% 6%;
+    --primary: 120 100% 50%;
+    --primary-foreground: 0 0% 0%;
 
-    --secondary: 220 30% 15%;
-    --secondary-foreground: 190 100% 85%;
+    --secondary: 120 100% 15%;
+    --secondary-foreground: 120 100% 60%;
 
-    --muted: 220 25% 18%;
-    --muted-foreground: 200 20% 55%;
+    --muted: 120 30% 10%;
+    --muted-foreground: 120 60% 40%;
 
-    --accent: 185 100% 45%;
-    --accent-foreground: 220 40% 6%;
+    --accent: 120 100% 40%;
+    --accent-foreground: 0 0% 0%;
 
-    --destructive: 0 80% 55%;
-    --destructive-foreground: 0 0% 100%;
+    --destructive: 0 100% 50%;
+    --destructive-foreground: 0 0% 0%;
 
-    --border: 200 30% 20%;
-    --input: 220 30% 15%;
-    --ring: 185 100% 50%;
+    --border: 120 100% 30%;
+    --input: 120 100% 10%;
+    --ring: 120 100% 50%;
 
-    --radius: 0.75rem;
+    --radius: 0;
 
     /* Calculator specific tokens */
-    --glow-primary: 185 100% 50%;
-    --glow-secondary: 200 100% 60%;
-    --display-bg: 220 50% 8%;
-    --button-bg: 220 30% 14%;
-    --button-hover: 220 35% 18%;
-    --button-active: 185 100% 50%;
-    --glass-bg: 220 30% 12%;
-    --glass-border: 200 40% 25%;
+    --glow-primary: 120 100% 50%;
+    --glow-secondary: 120 80% 40%;
+    --display-bg: 0 0% 2%;
+    --button-bg: 0 0% 8%;
+    --button-hover: 120 100% 20%;
+    --button-active: 120 100% 50%;
+    --glass-bg: 0 0% 5%;
+    --glass-border: 120 100% 30%;
     
     /* Function button colors */
-    --function-bg: 200 40% 15%;
-    --function-hover: 200 45% 20%;
-    --operator-bg: 185 60% 25%;
-    --operator-hover: 185 70% 30%;
-    --memory-bg: 270 40% 20%;
-    --memory-hover: 270 50% 25%;
+    --function-bg: 120 50% 10%;
+    --function-hover: 120 60% 15%;
+    --operator-bg: 120 80% 15%;
+    --operator-hover: 120 90% 20%;
+    --memory-bg: 120 40% 12%;
+    --memory-hover: 120 50% 18%;
   }
 
   .dark {
-    --background: 220 40% 6%;
-    --foreground: 190 100% 90%;
+    --background: 0 0% 0%;
+    --foreground: 120 100% 50%;
   }
 }
 
@@ -67,51 +67,61 @@
   }
 
   body {
-    @apply bg-background text-foreground antialiased;
-    font-family: 'JetBrains Mono', monospace;
+    @apply bg-background text-foreground;
+    font-family: 'VT323', monospace;
+    image-rendering: pixelated;
   }
 }
 
 @layer components {
   .glass-panel {
-    @apply bg-glass-bg/80 backdrop-blur-xl border border-glass-border/50 shadow-2xl;
+    @apply bg-glass-bg border-2 border-glass-border;
+    box-shadow: 
+      0 0 10px hsl(var(--primary) / 0.3),
+      inset 0 0 20px hsl(var(--primary) / 0.05);
   }
 
   .glow-text {
-    text-shadow: 0 0 10px hsl(var(--primary)), 0 0 20px hsl(var(--primary) / 0.5);
+    text-shadow: 
+      0 0 5px hsl(var(--primary)),
+      0 0 10px hsl(var(--primary)),
+      0 0 20px hsl(var(--primary) / 0.5);
   }
 
   .glow-border {
-    box-shadow: 0 0 15px hsl(var(--primary) / 0.3), inset 0 0 15px hsl(var(--primary) / 0.1);
+    box-shadow: 
+      0 0 5px hsl(var(--primary) / 0.5),
+      0 0 10px hsl(var(--primary) / 0.3),
+      inset 0 0 5px hsl(var(--primary) / 0.1);
   }
 
   .glow-subtle {
-    box-shadow: 0 0 8px hsl(var(--primary) / 0.2);
+    box-shadow: 0 0 5px hsl(var(--primary) / 0.3);
   }
 
   .calc-button {
-    @apply relative overflow-hidden transition-all duration-150 ease-out;
-    @apply active:scale-95 active:brightness-125;
+    @apply relative overflow-hidden transition-all duration-100 ease-out;
+    @apply active:scale-95;
+    border: 2px solid hsl(var(--primary) / 0.5);
   }
 
-  .calc-button::before {
-    content: '';
-    @apply absolute inset-0 opacity-0 transition-opacity duration-150;
-    background: radial-gradient(circle at center, hsl(var(--primary) / 0.3) 0%, transparent 70%);
-  }
-
-  .calc-button:hover::before {
-    @apply opacity-100;
+  .calc-button:hover {
+    border-color: hsl(var(--primary));
+    box-shadow: 0 0 10px hsl(var(--primary) / 0.5);
   }
 
   .calc-button.pressed {
     @apply scale-95;
-    box-shadow: 0 0 20px hsl(var(--primary) / 0.6), inset 0 0 10px hsl(var(--primary) / 0.3);
+    background: hsl(var(--primary) / 0.3) !important;
+    box-shadow: 0 0 15px hsl(var(--primary) / 0.8);
   }
 
   .display-screen {
-    background: linear-gradient(145deg, hsl(var(--display-bg)), hsl(220 45% 5%));
-    box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.5), 0 0 30px hsl(var(--primary) / 0.1);
+    background: hsl(var(--display-bg));
+    border: 3px solid hsl(var(--primary) / 0.6);
+    box-shadow: 
+      inset 0 0 30px hsl(var(--primary) / 0.1),
+      0 0 20px hsl(var(--primary) / 0.2);
   }
 
   .scanline {
@@ -124,15 +134,70 @@
     );
     pointer-events: none;
   }
+
+  /* CRT screen effect */
+  .crt-effect {
+    position: relative;
+  }
+
+  .crt-effect::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: 
+      radial-gradient(ellipse at center, transparent 0%, hsl(0 0% 0% / 0.3) 100%);
+    pointer-events: none;
+  }
+
+  .crt-effect::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+      0deg,
+      transparent 0px,
+      hsl(var(--primary) / 0.02) 1px,
+      transparent 2px
+    );
+    pointer-events: none;
+    animation: scanline-move 8s linear infinite;
+  }
+
+  /* ASCII-style box */
+  .ascii-box {
+    position: relative;
+    border: 2px solid hsl(var(--primary));
+  }
+
+  .ascii-box::before {
+    content: '╔═══════════════════════════════════════╗';
+    position: absolute;
+    top: -1.2em;
+    left: 0;
+    font-size: 0.7em;
+    color: hsl(var(--primary));
+    white-space: nowrap;
+    overflow: hidden;
+  }
+
+  /* Flicker effect */
+  .flicker {
+    animation: flicker 0.15s infinite;
+  }
+
+  @keyframes flicker {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.98; }
+  }
 }
 
 @layer utilities {
   .font-display {
-    font-family: 'Orbitron', 'JetBrains Mono', monospace;
+    font-family: 'Press Start 2P', 'VT323', monospace;
   }
 
   .font-mono {
-    font-family: 'JetBrains Mono', monospace;
+    font-family: 'VT323', monospace;
   }
 
   .animate-glow-pulse {
@@ -142,27 +207,37 @@
   @keyframes glow-pulse {
     0%, 100% {
       opacity: 1;
-      filter: brightness(1);
+      text-shadow: 0 0 5px hsl(var(--primary)), 0 0 10px hsl(var(--primary));
     }
     50% {
-      opacity: 0.8;
-      filter: brightness(1.2);
+      opacity: 0.9;
+      text-shadow: 0 0 10px hsl(var(--primary)), 0 0 20px hsl(var(--primary)), 0 0 30px hsl(var(--primary));
     }
   }
 
   .animate-key-press {
-    animation: key-press 0.15s ease-out;
+    animation: key-press 0.1s ease-out;
   }
 
   @keyframes key-press {
-    0% {
-      transform: scale(1);
-    }
-    50% {
-      transform: scale(0.92);
-    }
-    100% {
-      transform: scale(1);
-    }
+    0% { transform: scale(1); }
+    50% { transform: scale(0.95); }
+    100% { transform: scale(1); }
+  }
+
+  @keyframes scanline-move {
+    0% { background-position: 0 0; }
+    100% { background-position: 0 100vh; }
+  }
+
+  /* Cursor blink */
+  .cursor-blink::after {
+    content: '█';
+    animation: blink 1s step-end infinite;
+  }
+
+  @keyframes blink {
+    0%, 50% { opacity: 1; }
+    51%, 100% { opacity: 0; }
   }
 }

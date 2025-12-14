@@ -14,8 +14,8 @@ export default {
     },
     extend: {
       fontFamily: {
-        mono: ['JetBrains Mono', 'monospace'],
-        display: ['Orbitron', 'JetBrains Mono', 'monospace'],
+        mono: ['VT323', 'monospace'],
+        display: ['Press Start 2P', 'VT323', 'monospace'],
       },
       colors: {
         border: "hsl(var(--border))",
@@ -82,9 +82,9 @@ export default {
         },
       },
       borderRadius: {
-        lg: "var(--radius)",
-        md: "calc(var(--radius) - 2px)",
-        sm: "calc(var(--radius) - 4px)",
+        lg: "0",
+        md: "0",
+        sm: "0",
       },
       keyframes: {
         "accordion-down": {

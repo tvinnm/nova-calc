@@ -1,27 +1,21 @@
 import { ScientificCalculator } from '@/components/calculator/ScientificCalculator';
-import { ParticleBackground } from '@/components/ParticleBackground';
 
 const Index = () => {
   return (
-    <main className="min-h-screen bg-background relative overflow-hidden">
-      {/* Animated particle background */}
-      <ParticleBackground />
+    <main className="min-h-screen bg-background relative overflow-hidden crt-effect">
+      {/* Scanline overlay */}
+      <div className="fixed inset-0 pointer-events-none scanline z-50" />
 
-      {/* Background effects */}
+      {/* Background grid pattern */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        {/* Gradient orbs */}
-        <div className="absolute top-[-20%] left-[-10%] w-[600px] h-[600px] rounded-full bg-primary/5 blur-3xl" />
-        <div className="absolute bottom-[-20%] right-[-10%] w-[500px] h-[500px] rounded-full bg-glow-secondary/5 blur-3xl" />
-        
-        {/* Grid pattern */}
         <div 
-          className="absolute inset-0 opacity-[0.02]"
+          className="absolute inset-0 opacity-10"
           style={{
             backgroundImage: `
-              linear-gradient(hsl(var(--primary) / 0.3) 1px, transparent 1px),
-              linear-gradient(90deg, hsl(var(--primary) / 0.3) 1px, transparent 1px)
+              linear-gradient(hsl(var(--primary) / 0.2) 1px, transparent 1px),
+              linear-gradient(90deg, hsl(var(--primary) / 0.2) 1px, transparent 1px)
             `,
-            backgroundSize: '50px 50px',
+            backgroundSize: '20px 20px',
           }}
         />
       </div>
@@ -33,41 +27,59 @@ const Index = () => {
           {/* Left side - Text content */}
           <div className="text-left space-y-8 lg:pr-8">
             <div className="space-y-4">
-              <h1 className="font-display text-4xl md:text-5xl lg:text-6xl text-foreground leading-tight">
-                Calculate Your{' '}
-                <span className="text-primary glow-text">Problem Easily.</span>
+              <div className="text-muted-foreground text-sm mb-2 font-mono">
+                {'>'} SYSTEM READY_
+              </div>
+              <h1 className="font-display text-xl md:text-2xl lg:text-3xl text-foreground leading-relaxed glow-text">
+                SCIENTIFIC<br />
+                <span className="text-primary">CALCULATOR</span><br />
+                v2.5
               </h1>
-              <p className="text-muted-foreground text-lg md:text-xl max-w-lg leading-relaxed">
-                A powerful scientific calculator with advanced mathematical functions, 
-                built for engineers, students, and professionals who demand precision.
+              <p className="text-muted-foreground text-xl md:text-2xl max-w-lg leading-relaxed font-mono mt-6">
+                {'>'} Advanced mathematical<br />
+                {'>'} computation terminal<br />
+                {'>'} for precision work_
               </p>
             </div>
 
+            {/* ASCII art divider */}
+            <div className="text-primary/50 text-xs font-mono hidden lg:block">
+              ════════════════════════════════════
+            </div>
+
             {/* Tips section */}
-            <div className="space-y-6 pt-4">
-              <div className="space-y-2">
-                <h3 className="text-primary font-display text-lg tracking-wide">Tips — 1</h3>
-                <p className="text-muted-foreground text-sm leading-relaxed max-w-md">
-                  Use keyboard shortcuts for faster calculations. Press numbers, operators, 
-                  and Enter to compute results instantly without clicking.
+            <div className="space-y-4 pt-4">
+              <div className="space-y-1 border-l-2 border-primary/50 pl-4">
+                <h3 className="text-primary font-mono text-lg">[TIP 01]</h3>
+                <p className="text-muted-foreground text-lg leading-relaxed max-w-md font-mono">
+                  Use keyboard for input.<br />
+                  Numbers + operators + ENTER
                 </p>
               </div>
 
-              <div className="space-y-2">
-                <h3 className="text-primary font-display text-lg tracking-wide">Tips — 2</h3>
-                <p className="text-muted-foreground text-sm leading-relaxed max-w-md">
-                  Toggle between RAD and DEG modes for trigonometric functions. 
-                  Perfect for both pure math and engineering applications.
+              <div className="space-y-1 border-l-2 border-primary/50 pl-4">
+                <h3 className="text-primary font-mono text-lg">[TIP 02]</h3>
+                <p className="text-muted-foreground text-lg leading-relaxed max-w-md font-mono">
+                  Toggle RAD/DEG mode for<br />
+                  trigonometric functions
                 </p>
               </div>
 
-              <div className="space-y-2">
-                <h3 className="text-primary font-display text-lg tracking-wide">Tips — 3</h3>
-                <p className="text-muted-foreground text-sm leading-relaxed max-w-md">
-                  Access your calculation history anytime. Click the history icon 
-                  to search through past calculations and reuse results.
+              <div className="space-y-1 border-l-2 border-primary/50 pl-4">
+                <h3 className="text-primary font-mono text-lg">[TIP 03]</h3>
+                <p className="text-muted-foreground text-lg leading-relaxed max-w-md font-mono">
+                  Access calculation history<br />
+                  via HISTORY button
                 </p>
               </div>
+            </div>
+
+            {/* ASCII art footer */}
+            <div className="text-primary/30 text-xs font-mono hidden lg:block pt-4">
+              ╔══════════════════════════════════╗<br />
+              ║  (C) 2024 CALC-TERM SYSTEMS      ║<br />
+              ║  ALL RIGHTS RESERVED             ║<br />
+              ╚══════════════════════════════════╝
             </div>
           </div>
 
