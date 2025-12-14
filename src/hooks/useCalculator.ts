@@ -43,6 +43,7 @@ export function useCalculator() {
 
       // Handle scientific functions
       const funcs: Record<string, (x: number) => number> = {
+        // Trigonometry (11-16)
         sin: (x) => (isRad ? Math.sin(x) : Math.sin(toRadians(x))),
         cos: (x) => (isRad ? Math.cos(x) : Math.cos(toRadians(x))),
         tan: (x) => (isRad ? Math.tan(x) : Math.tan(toRadians(x))),
@@ -52,15 +53,25 @@ export function useCalculator() {
         sinh: Math.sinh,
         cosh: Math.cosh,
         tanh: Math.tanh,
+        // Logarithms (9-10, 17)
         log: Math.log10,
         ln: Math.log,
+        exp: Math.exp,
+        // Powers & Roots (6-7)
+        sq: (x) => x * x,
         sqrt: Math.sqrt,
         cbrt: Math.cbrt,
+        // Additional (19)
         abs: Math.abs,
-        exp: Math.exp,
         floor: Math.floor,
         ceil: Math.ceil,
         round: Math.round,
+        // Conversions (22-23)
+        radToDeg: (x) => toDegrees(x),
+        degToRad: (x) => toRadians(x),
+        // Decimal conversions (24-25) - output as decimal representation
+        decToBin: (x) => parseInt(Math.floor(x).toString(2)),
+        binToDec: (x) => parseInt(x.toString(), 2) || 0,
       };
 
       // Replace function calls
@@ -70,6 +81,41 @@ export function useCalculator() {
           const value = Function(`"use strict"; return (${arg})`)();
           return String(fn(value));
         });
+      });
+
+      // Handle n-th root: nroot(x,n) = x^(1/n)
+      processed = processed.replace(/nroot\(([^,]+),([^)]+)\)/g, (_, x, n) => {
+        const xVal = Function(`"use strict"; return (${x})`)();
+        const nVal = Function(`"use strict"; return (${n})`)();
+        return String(Math.pow(xVal, 1 / nVal));
+      });
+
+      // Handle log base b: logb(x,b)
+      processed = processed.replace(/logb\(([^,]+),([^)]+)\)/g, (_, x, b) => {
+        const xVal = Function(`"use strict"; return (${x})`)();
+        const bVal = Function(`"use strict"; return (${b})`)();
+        return String(Math.log(xVal) / Math.log(bVal));
+      });
+
+      // Handle linear equation solver: solveLinear(a,b) solves ax + b = 0 => x = -b/a
+      processed = processed.replace(/solveLinear\(([^,]+),([^)]+)\)/g, (_, a, b) => {
+        const aVal = Function(`"use strict"; return (${a})`)();
+        const bVal = Function(`"use strict"; return (${b})`)();
+        if (aVal === 0) return 'NaN';
+        return String(-bVal / aVal);
+      });
+
+      // Handle quadratic equation solver: solveQuad(a,b,c) solves ax² + bx + c = 0
+      processed = processed.replace(/solveQuad\(([^,]+),([^,]+),([^)]+)\)/g, (_, a, b, c) => {
+        const aVal = Function(`"use strict"; return (${a})`)();
+        const bVal = Function(`"use strict"; return (${b})`)();
+        const cVal = Function(`"use strict"; return (${c})`)();
+        const discriminant = bVal * bVal - 4 * aVal * cVal;
+        if (discriminant < 0) return 'No real roots';
+        if (discriminant === 0) return String(-bVal / (2 * aVal));
+        const x1 = (-bVal + Math.sqrt(discriminant)) / (2 * aVal);
+        const x2 = (-bVal - Math.sqrt(discriminant)) / (2 * aVal);
+        return `${x1}, ${x2}`;
       });
 
       // Handle factorial
