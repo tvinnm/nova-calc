@@ -14,8 +14,8 @@ export default {
     },
     extend: {
       fontFamily: {
-        mono: ['VT323', 'monospace'],
-        display: ['Press Start 2P', 'VT323', 'monospace'],
+        mono: ['JetBrains Mono', 'monospace'],
+        display: ['Orbitron', 'JetBrains Mono', 'monospace'],
       },
       colors: {
         border: "hsl(var(--border))",
