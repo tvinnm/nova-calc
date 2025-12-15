@@ -2,84 +2,69 @@ import { ScientificCalculator } from '@/components/calculator/ScientificCalculat
 
 const Index = () => {
   return (
-    <main className="min-h-screen bg-background relative overflow-hidden crt-effect">
-      {/* Scanline overlay */}
-      <div className="fixed inset-0 pointer-events-none scanline z-50" />
-
-      {/* Background grid pattern */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div 
-          className="absolute inset-0 opacity-10"
-          style={{
-            backgroundImage: `
-              linear-gradient(hsl(var(--primary) / 0.2) 1px, transparent 1px),
-              linear-gradient(90deg, hsl(var(--primary) / 0.2) 1px, transparent 1px)
-            `,
-            backgroundSize: '20px 20px',
-          }}
-        />
-      </div>
-
+    <main className="min-h-screen bg-background relative overflow-hidden">
       {/* Main content */}
       <div className="relative z-10 flex items-center justify-center min-h-screen py-8 px-4 md:px-8 lg:px-16">
         <div className="w-full max-w-7xl grid lg:grid-cols-[1fr_auto] gap-8 lg:gap-16 items-center">
           
-          {/* Left side - Text content */}
+          {/* Left side - Text content styled like C graphics */}
           <div className="text-left space-y-8 lg:pr-8">
             <div className="space-y-4">
-              <div className="text-muted-foreground text-sm mb-2 font-mono">
-                {'>'} SYSTEM READY_
-              </div>
-              <h1 className="font-display text-xl md:text-2xl lg:text-3xl text-foreground leading-relaxed glow-text">
-                SCIENTIFIC<br />
-                <span className="text-primary">CALCULATOR</span><br />
-                v2.5
+              <h1 className="font-display text-2xl md:text-3xl lg:text-4xl text-primary leading-relaxed">
+                Student Reference Program
               </h1>
-              <p className="text-muted-foreground text-xl md:text-2xl max-w-lg leading-relaxed font-mono mt-6">
-                {'>'} Advanced mathematical<br />
-                {'>'} computation terminal<br />
-                {'>'} for precision work_
+              <h2 className="font-display text-xl md:text-2xl text-secondary-foreground">
+                SCIENTIFIC CALCULATOR
+              </h2>
+              <p className="text-muted-foreground text-lg max-w-lg leading-relaxed font-mono mt-6">
+                Advanced mathematical computation<br />
+                program for precision calculations
               </p>
             </div>
 
-            {/* ASCII art divider */}
-            <div className="text-primary/50 text-xs font-mono hidden lg:block">
-              ════════════════════════════════════
+            {/* Animated stars like original C code */}
+            <div className="text-primary text-2xl font-mono tracking-widest">
+              ★ ★ ★ ★ ★ ★ ★ ★ ★ ★
             </div>
 
-            {/* Tips section */}
+            {/* Tips section styled like C graphics prompts */}
             <div className="space-y-4 pt-4">
-              <div className="space-y-1 border-l-2 border-primary/50 pl-4">
-                <h3 className="text-primary font-mono text-lg">[TIP 01]</h3>
-                <p className="text-muted-foreground text-lg leading-relaxed max-w-md font-mono">
-                  Use keyboard for input.<br />
-                  Numbers + operators + ENTER
+              <div className="bg-card border-2 border-border p-4" style={{ boxShadow: '4px 4px 0 hsl(180 50% 25%)' }}>
+                <h3 className="text-muted-foreground font-mono text-sm mb-2">Step 1:</h3>
+                <p className="text-secondary-foreground text-base leading-relaxed font-mono">
+                  Enter your choice for your<br />
+                  desired operation (1-20)
                 </p>
               </div>
 
-              <div className="space-y-1 border-l-2 border-primary/50 pl-4">
-                <h3 className="text-primary font-mono text-lg">[TIP 02]</h3>
-                <p className="text-muted-foreground text-lg leading-relaxed max-w-md font-mono">
-                  Toggle RAD/DEG mode for<br />
-                  trigonometric functions
+              <div className="bg-card border-2 border-border p-4" style={{ boxShadow: '4px 4px 0 hsl(180 50% 25%)' }}>
+                <h3 className="text-muted-foreground font-mono text-sm mb-2">Step 2:</h3>
+                <p className="text-secondary-foreground text-base leading-relaxed font-mono">
+                  Enter the values when prompted<br />
+                  and view your result
                 </p>
               </div>
 
-              <div className="space-y-1 border-l-2 border-primary/50 pl-4">
-                <h3 className="text-primary font-mono text-lg">[TIP 03]</h3>
-                <p className="text-muted-foreground text-lg leading-relaxed max-w-md font-mono">
-                  Access calculation history<br />
-                  via HISTORY button
+              <div className="bg-card border-2 border-border p-4" style={{ boxShadow: '4px 4px 0 hsl(180 50% 25%)' }}>
+                <h3 className="text-muted-foreground font-mono text-sm mb-2">Features:</h3>
+                <p className="text-secondary-foreground text-base leading-relaxed font-mono">
+                  Add, Sub, Mul, Div, %, Mod, Abs<br />
+                  Sqrt, Sin, Cos, Tan, ln, log<br />
+                  10^x, x^y, e^x, nPr, nCr, Hyp
                 </p>
               </div>
             </div>
 
-            {/* ASCII art footer */}
-            <div className="text-primary/30 text-xs font-mono hidden lg:block pt-4">
-              ╔══════════════════════════════════╗<br />
-              ║  (C) 2024 CALC-TERM SYSTEMS      ║<br />
-              ║  ALL RIGHTS RESERVED             ║<br />
-              ╚══════════════════════════════════╝
+            {/* Footer credits like original */}
+            <div className="flex justify-between text-sm font-mono pt-4">
+              <div>
+                <span className="text-muted-foreground">SUBMITTED TO:</span><br />
+                <span className="text-primary">Open-Source Development</span>
+              </div>
+              <div className="text-right">
+                <span className="text-muted-foreground">SUBMITTED BY:</span><br />
+                <span className="text-primary">RAJAT DEY</span>
+              </div>
             </div>
           </div>
 

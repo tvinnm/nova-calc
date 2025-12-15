@@ -140,26 +140,25 @@ export function ScientificCalculator() {
 
   return (
     <div className="w-full max-w-xl">
-      {/* Header */}
+      {/* Header - styled like C graphics title */}
       <div className="flex items-center justify-between mb-4">
         <div>
           <div className="text-muted-foreground text-sm font-mono mb-1">
-            {'>'} SYSTEM v2.5
+            Student Reference Program
           </div>
-          <h2 className="font-mono text-2xl md:text-3xl text-primary glow-text tracking-wider">
-            [CALC-TERM]
+          <h2 className="font-display text-xl md:text-2xl text-primary tracking-wider">
+            SCIENTIFIC CALCULATOR
           </h2>
         </div>
         <button
           onClick={() => setShowHistory(!showHistory)}
           className={cn(
-            'px-4 py-2 border-2 transition-all font-mono text-lg',
-            showHistory 
-              ? 'bg-primary/20 text-primary border-primary glow-subtle' 
-              : 'bg-button border-primary/30 text-muted-foreground hover:border-primary hover:text-primary'
+            'px-4 py-2 border-2 transition-all font-mono text-sm',
+            'bg-secondary text-secondary-foreground border-border',
+            showHistory && 'bg-primary text-primary-foreground'
           )}
         >
-          [HIST]
+          HISTORY
         </button>
       </div>
 
@@ -271,9 +270,9 @@ export function ScientificCalculator() {
           {/* Advanced functions toggle */}
           <button
             onClick={() => setShowAdvanced(!showAdvanced)}
-            className="w-full py-2 mb-2 flex items-center justify-center gap-1 text-lg text-muted-foreground hover:text-primary transition-colors font-mono border border-primary/20 hover:border-primary/50"
+            className="w-full py-2 mb-2 flex items-center justify-center gap-1 text-sm text-secondary-foreground bg-secondary hover:bg-button-hover transition-colors font-mono border-2 border-border"
           >
-            [{showAdvanced ? '▲ HIDE' : '▼ SHOW'}] ADVANCED
+            {showAdvanced ? '▲ HIDE' : '▼ SHOW'} ADVANCED
           </button>
 
           {/* Advanced functions */}

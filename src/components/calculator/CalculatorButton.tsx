@@ -13,12 +13,12 @@ interface CalculatorButtonProps {
 }
 
 const variantStyles: Record<ButtonVariant, string> = {
-  default: 'bg-button hover:bg-button-hover text-foreground border-primary/30 hover:border-primary',
-  operator: 'bg-operator hover:bg-operator-hover text-primary font-semibold border-primary/50 hover:border-primary',
-  function: 'bg-function hover:bg-function-hover text-secondary-foreground border-primary/30 hover:border-primary',
-  memory: 'bg-memory hover:bg-memory-hover text-primary/80 border-primary/30 hover:border-primary',
-  equals: 'bg-primary/20 hover:bg-primary/30 text-primary font-bold border-primary hover:shadow-[0_0_15px_hsl(var(--primary)/0.5)]',
-  clear: 'bg-destructive/10 hover:bg-destructive/20 text-destructive border-destructive/50 hover:border-destructive',
+  default: 'bg-secondary text-secondary-foreground',
+  operator: 'bg-secondary text-secondary-foreground font-semibold',
+  function: 'bg-secondary text-secondary-foreground',
+  memory: 'bg-secondary text-secondary-foreground',
+  equals: 'bg-primary text-primary-foreground font-bold',
+  clear: 'bg-destructive text-destructive-foreground',
 };
 
 export const CalculatorButton = forwardRef<HTMLButtonElement, CalculatorButtonProps>(
